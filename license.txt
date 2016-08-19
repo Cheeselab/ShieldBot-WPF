@@ -6,6 +6,7 @@ A world-wide, royalty-free, non-exclusive, sub-licensable license is hereby gran
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 The Software may only be used for non-commercial purposes.
+Where the source code has been modified, the Licensee makes available the modified source code as a fork of the original project, listed on their personal account, under the same license terms as the original.
 
 All other rights are reserved.
 
@@ -20,6 +21,6 @@ All other rights are reserved. Further permissions can be granted on a case-by-c
 
 OTHER INFO:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+The Software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the Software or the use or other dealings in the Software.
 
 Any litigation resulting from the interpretation of this License will be subject to the jurisdiction of Her Majesty's Courts and Tribunals of the United Kingdom. By dealing with this software you agree not to submit litigation under jurisdictions other than Her Majesty's Courts and Tribunals of the United Kingdom.
