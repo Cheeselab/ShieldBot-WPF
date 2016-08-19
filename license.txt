@@ -10,9 +10,9 @@ Where the source code has been modified, the Licensee makes available the modifi
 
 All other rights are reserved.
 
-LICENSE TERMS: BUSINESS
+LICENSE TERMS: BUSINESS/ORGANISATION
 
-A world-wide, royalty-free, non-exclusive, sub-licensable license is hereby granted to any business, corporation, or enterprise obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software, including the rights to use, and copy, subject to the following conditions:
+A world-wide, royalty-free, non-exclusive, sub-licensable license is hereby granted to any business, corporation, enterprise, or organisation (including but not limited to non-profit organisations, and charities), obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software, including the rights to use, and copy, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 The author is made aware of the use of the Software via Twitter (@Paladinleeds)
