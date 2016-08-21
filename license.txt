@@ -1,5 +1,13 @@
 Copyright (c) 2016 Paladinleeds
 
+LICENSE TERMS: CHEESELAB INDUSTRIES INC
+
+Permission is hereby irrevocably granted, free of charge, to Cheeselab Industries Inc, a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+Any sublicensing of the software is subject to the license terms detailed below
+
+All other rights are reserved.
+
 LICENSE TERMS: INDIVIDAUL USER
 
 A world-wide, royalty-free, non-exclusive, sub-licensable license is hereby granted to any individual person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software, including the rights to use, copy, modify, merge, publish, and distribute free of charge, subject to the following conditions:
