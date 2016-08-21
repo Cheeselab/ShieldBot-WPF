@@ -1,0 +1,14 @@
+c:\users\daniel\documents\visual studio 2015\Projects\ShieldBot-WPF\ShieldBot\bin\Debug\ShieldBot.exe.config
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\ShieldBot.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\MainWindow.g.cs
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\App.g.cs
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\ShieldBot_MarkupCompile.cache
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\ShieldBot_MarkupCompile.lref
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\bin\Debug\ShieldBot.exe
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\bin\Debug\ShieldBot.pdb
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\MainWindow.baml
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\ShieldBot.g.resources
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\ShieldBot.Properties.Resources.resources
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\ShieldBot.csproj.GenerateResource.Cache
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\ShieldBot.exe
+C:\Users\Daniel\Documents\Visual Studio 2015\Projects\ShieldBot-WPF\ShieldBot\obj\Debug\ShieldBot.pdb

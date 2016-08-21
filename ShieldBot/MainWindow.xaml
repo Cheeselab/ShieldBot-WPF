@@ -1,0 +1,63 @@
+﻿<Window x:Class="ShieldBot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShieldBot"
+        mc:Ignorable="d"
+        Title="ShieldBot" Height="350" Width="525">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="LightGray"  Height="20" Grid.Row="0">
+            <MenuItem Header="Connections">
+                <MenuItem Header="Twitch">
+                    <MenuItem Header="Connect"/>
+                    <MenuItem Header="Login"/>
+                </MenuItem>
+                <MenuItem Header="Hitbox">
+                    <MenuItem Header="Connect"/>
+                    <MenuItem Header="Login"/>
+                </MenuItem>
+                <MenuItem Header="YouTube">
+                    <MenuItem Header="Connect"/>
+                    <MenuItem Header="Login"/>
+                </MenuItem>
+                <MenuItem Header="Beam">
+                    <MenuItem Header="Connect"/>
+                    <MenuItem Header="Login"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="(Re)connect"/>
+                <MenuItem Header="Disconnect"/>
+            </MenuItem>
+            <MenuItem Header="Dashboard"/>
+            <MenuItem Header="Chat"/>
+            <MenuItem Header="Giveaways"/>
+            <MenuItem Header="Music Player"/>
+            <MenuItem Header="Options">
+                <MenuItem Header="Add-Ons"/>
+                <MenuItem Header="Spam Protection"/>
+                <MenuItem Header="Commands"/>
+                <MenuItem Header="Timers"/>
+                <MenuItem Header="Currencies"/>
+                <MenuItem Header="AutoDJ"/>
+                <MenuItem Header="Channel SFX"/>
+                <Separator />
+                <MenuItem Header="Save to Files"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Contents"/>
+                <MenuItem Header="Github Repo"/>
+                <MenuItem Header="Support + Suggestions"/>
+                <Separator />
+                <MenuItem Header="About Program"/>
+                <MenuItem Header="Check for updates"/>
+            </MenuItem>
+        </Menu>
+        <ScrollViewer>
+            <StackPanel>
+
+                <ContentControl Margin="3" x:Name="currentContent" />
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>
