@@ -1,0 +1,373 @@
+﻿<UserControl x:Class="ShieldBot.SpamProtection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShieldBot"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <TabControl Background="{x:Null}">
+
+
+            <!-- SPAM PROTECTION: STRIKE MANAGEMENT -->
+            <TabItem Header="Strike System">
+                <StackPanel>
+                    <TextBlock Margin="5,0">First Strike</TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*" />
+                            <ColumnDefinition Width="0.4*" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" x:Name="firstType" Margin="5,0,0,0" IsReadOnly="True">
+                            <ComboBoxItem x:Name="firstPurge" Content="Purge"/>
+                            <ComboBoxItem x:Name="firstTimeout" Content="Timeout (Specify length in seconds below)"/>
+                            <ComboBoxItem x:Name="firstBan" Content="Ban"/>
+                        </ComboBox>
+                        <TextBox Grid.Column="1" x:Name="firstTime" HorizontalAlignment="Stretch" Margin="0,0,5,0"/>
+                    </Grid>
+                    <TextBlock Margin="5,0">Second Strike</TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*" />
+                            <ColumnDefinition Width="0.4*" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" x:Name="secondType" Margin="5,0,0,0" IsReadOnly="True">
+                            <ComboBoxItem Content="Purge"></ComboBoxItem>
+                            <ComboBoxItem x:Name="secondTimeout" Content="Timeout (Specify length in seconds below)"/>
+                            <ComboBoxItem x:Name="secondBan" Content="Ban"/>
+                        </ComboBox>
+                        <TextBox  Grid.Column="1" x:Name="secondTime" HorizontalAlignment="Stretch" Margin="0,0,5,0"/>
+                    </Grid>
+                    <TextBlock Margin="5,0">Third Strike</TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*" />
+                            <ColumnDefinition Width="0.4*" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" x:Name="thirdType" Margin="5,0,0,0" IsReadOnly="True">
+                            <ComboBoxItem x:Name="thirdPurge" Content="Purge"/>
+                            <ComboBoxItem x:Name="thirdTimeout" Content="Timeout (Specify length in seconds below)"/>
+                            <ComboBoxItem x:Name="thirdBan" Content="Ban"/>
+                        </ComboBox>
+                        <TextBox Grid.Column="1" x:Name="thirdTime" HorizontalAlignment="Stretch" Margin="0,0,5,0"/>
+                    </Grid>
+                    <TextBlock Margin="5,5,0,0">How long (in seconds) does it take for each strike to reset?</TextBlock>
+                    <TextBox x:Name="strikeReset" Grid.ColumnSpan="2" Grid.Row="6" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                </StackPanel>
+            </TabItem>
+
+
+            <!-- SPAM PROTECTION: LINKS -->
+            <TabItem Header="Links Protection">
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*" />
+                            <ColumnDefinition Width="0.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="linkProtection" Grid.Column="0" Grid.Row="0" Content="Link Protection" Margin="5,5,0,5"/>
+                        <CheckBox x:Name="linkSilentProtection" Grid.Column="0" Grid.Row="1" Content="Silent Protection" Margin="5,5,0,5"/>
+                        <CheckBox x:Name="linkSubscribers" Grid.Column="1" Grid.Row="0" Content="Subscribers immune?" Margin="5,5,0,5"/>
+                        <CheckBox x:Name="linkRegulars" Grid.Column="1" Grid.Row="1" Content="Regulars immune?" Margin="5,5,0,5"/>
+                        <CheckBox x:Name="linkCasters" Grid.Column="1" Grid.Row="2" Content="Casters immune?" Margin="5,5,0,5"/>
+                        <CheckBox x:Name="linkCustom" Grid.Column="0" Grid.Row="2" Content="Custom Message" Margin="5,5,0,5"/>
+                        <StackPanel x:Name="linkCustomStack" Grid.ColumnSpan="2" Grid.Row="3">
+                            <TextBlock Margin="5,5,0,0">If Custom Message Enabled, please input custom message below</TextBlock>
+                            <TextBox x:Name="linkTimeooutMSG" HorizontalAlignment="Stretch" Margin="5,0,0,5"/>
+                        </StackPanel>
+                    </Grid>
+                    <TextBlock Margin="5,5,5,0">Add a new link to the whitelist</TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.7*" />
+                            <ColumnDefinition Width="0.3*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" x:Name="whiteNew" Margin="5,0,0,0" />
+                        <Button Grid.Column="1" Margin="0,0,5,0" x:Name="whiteAdd" Click="whiteAddClick">Add to Whitelist</Button>
+                    </Grid>
+                    <TextBlock Margin="5,5,5,0">Current whitelisted links</TextBlock>
+                    <ListView Margin="5,5,5,0" MinHeight="20" x:Name="whiteList">
+                    </ListView>
+                    <Button Click="whiteDeleteClick" Margin="5" x:Name="whiteDelete">Delete from Whitelist</Button>
+                </StackPanel>
+            </TabItem>
+
+
+            <!-- SPAM PROTECTION: BLACKLIST -->
+            <TabItem Header="Phrase Blacklist">
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*" />
+                            <ColumnDefinition Width="0.5*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <CheckBox x:Name="phraseProtection" Grid.Column="0" Grid.Row="0" Content="Link Protection" Margin="5,5,0,5"/>
+                        <CheckBox x:Name="phraseSilentProtection" Grid.Column="0" Grid.Row="1" Content="Silent Protection" Margin="5,5,0,5"/>
+                        <CheckBox x:Name="phraseSubscribers" Grid.Column="1" Grid.Row="0" Content="Subscribers immune?" Margin="5,5,0,5"/>
+                        <CheckBox x:Name="phraseRegulars" Grid.Column="1" Grid.Row="1" Content="Regulars immune?" Margin="5,5,0,5"/>
+                        <CheckBox x:Name="phraseCasters" Grid.Column="1" Grid.Row="2" Content="Casters immune?" Margin="5,5,0,5"/>
+                        <CheckBox x:Name="phraseCustom" Grid.Column="0" Grid.Row="2" Content="Custom Message" Margin="5,5,0,5"/>
+                        <StackPanel x:Name="phraseCustomStack" Grid.ColumnSpan="2" Grid.Row="3">
+                            <TextBlock Margin="5,5,0,0">If Custom Message Enabled, please input custom message below</TextBlock>
+                            <TextBox x:Name="phraseTimeooutMSG" HorizontalAlignment="Stretch" Margin="5,0,0,5"/>
+                        </StackPanel>
+                    </Grid>
+                    <TextBlock Margin="5,5,5,0">Add a new word or phrase to the blacklist</TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.7*" />
+                            <ColumnDefinition Width="0.3*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" x:Name="blackNew" Margin="5,0,0,0" />
+                        <Button Grid.Column="1" Margin="0,0,5,0" x:Name="blackAdd" Click="blackAddClick">Add to Blacklist</Button>
+                    </Grid>
+                    <TextBlock Margin="5,5,5,0">Current banned words and phrases</TextBlock>
+                    <ListBox Margin="5,5,5,0" MinHeight="20" x:Name="blackList">
+                    </ListBox>
+                    <Button Margin="5" x:Name="blackDelete" Click="blackDeleteClick">Delete from Blacklist</Button>
+                </StackPanel>
+            </TabItem>
+
+
+            <!-- SPAM PROTECTION: BANNED NAMES -->
+            <TabItem Header="Name Blacklist">
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap" Margin="5,5,5,0">Please note that the banned names list does not operate on the strike system. If a banned name is detected that user will automatically be permanently banned.</TextBlock>
+                    <TextBlock Margin="5,5,5,0">Add a new name to the list of banned names</TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.7*" />
+                            <ColumnDefinition Width="0.3*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" x:Name="nameNew" Margin="5,0,0,0" />
+                        <Button Grid.Column="1" Margin="0,0,5,0" x:Name="nameAdd" Click="nameAddClick">Add to Blacklist</Button>
+                    </Grid>
+                    <TextBlock Margin="5,5,5,0">Current banned names</TextBlock>
+                    <ListBox Margin="5,5,5,0" MinHeight="20" x:Name="nameList">
+                    </ListBox>
+                    <Button Margin="5" x:Name="nameDelete" Click="nameDeleteClick">Delete from Blacklist</Button>
+                </StackPanel>
+            </TabItem>
+
+
+            <!-- SPAM PROTECTION: CAPS -->
+            <TabItem Header="Caps Protection">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="capsProtection" Grid.Column="0" Grid.Row="0" Content="Protection Enabled" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="capsSilentProtection" Grid.Column="0" Grid.Row="1" Content="Silent Protection" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="capsSubscribers" Grid.Column="1" Grid.Row="0" Content="Subscribers immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="capsRegulars" Grid.Column="1" Grid.Row="1" Content="Regulars immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="capsCasters" Grid.Column="1" Grid.Row="2" Content="Casters immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="capsCustom" Grid.Column="0" Grid.Row="2" Content="Custom Message" Margin="5,5,0,5"/>
+                    <StackPanel x:Name="capsCustomStack" Grid.ColumnSpan="2" Grid.Row="3">
+                        <TextBlock Margin="5,5,0,0">If Custom Message Enabled, please input custom message below</TextBlock>
+                        <TextBox x:Name="capsTimeooutMSG" HorizontalAlignment="Stretch" Margin="5,0,0,5"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="0" Grid.Row="4" Margin="5,5,0,0">Minimum message length to trigger</TextBlock>
+                    <TextBox x:Name="capsThreshold" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="4" Margin="5,5,0,0">Ratio to trigger protection</TextBlock>
+                    <TextBox x:Name="capsRatio" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                </Grid>
+            </TabItem>
+
+
+            <!-- SPAM PROTECTION: SYMBOLS -->
+            <TabItem Header="Symbol Protection">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="symbolProtection" Grid.Column="0" Grid.Row="0" Content="Protection Enabled" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="symbolSilentProtection" Grid.Column="0" Grid.Row="1" Content="Silent Protection" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="symbolSubscribers" Grid.Column="1" Grid.Row="0" Content="Subscribers immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="symbolRegulars" Grid.Column="1" Grid.Row="1" Content="Regulars immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="symbolCasters" Grid.Column="1" Grid.Row="2" Content="Casters immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="symbolCustom" Grid.Column="0" Grid.Row="2" Content="Custom Message" Margin="5,5,0,5"/>
+                    <StackPanel x:Name="symbolCustomStack" Grid.ColumnSpan="2" Grid.Row="3">
+                        <TextBlock Margin="5,5,0,0">If Custom Message Enabled, please input custom message below</TextBlock>
+                        <TextBox x:Name="symbolTimeooutMSG" HorizontalAlignment="Stretch" Margin="5,0,0,5"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="0" Grid.Row="4" Margin="5,5,0,0">Minimum message length to trigger</TextBlock>
+                    <TextBox x:Name="symbolThreshold" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="4" Margin="5,5,0,0">Ratio to trigger protection</TextBlock>
+                    <TextBox x:Name="symbolRatio" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                </Grid>
+            </TabItem>
+
+
+            <!-- SPAM PROTECTION: EMOTES -->
+            <TabItem Header="Emote Protection">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="emoteProtection" Grid.Column="0" Grid.Row="0" Content="Protection Enabled" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="emoteSilentProtection" Grid.Column="0" Grid.Row="1" Content="Silent Protection" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="emoteSubscribers" Grid.Column="1" Grid.Row="0" Content="Subscribers immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="emoteRegulars" Grid.Column="1" Grid.Row="1" Content="Regulars immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="emoteCasters" Grid.Column="1" Grid.Row="2" Content="Casters immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="emoteCustom" Grid.Column="0" Grid.Row="2" Content="Custom Message" Margin="5,5,0,5"/>
+                    <StackPanel x:Name="emoteCustomStack" Grid.ColumnSpan="2" Grid.Row="3">
+                        <TextBlock Margin="5,5,0,0">If Custom Message Enabled, please input custom message below</TextBlock>
+                        <TextBox x:Name="emoteTimeooutMSG" HorizontalAlignment="Stretch" Margin="5,0,0,5"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="0" Grid.Row="4" Margin="5,5,0,0">Minimum message length to trigger</TextBlock>
+                    <TextBox x:Name="emoteThreshold" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="4" Margin="5,5,0,0">Ratio to trigger protection</TextBlock>
+                    <TextBox x:Name="emoteRatio" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                </Grid>
+            </TabItem>
+
+
+            <!-- SPAM PROTECTION: REPEAT -->
+            <TabItem Header="Repetition Protection">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="repeatProtection" Grid.Column="0" Grid.Row="0" Content="Protection Enabled" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="repeatSilentProtection" Grid.Column="0" Grid.Row="1" Content="Silent Protection" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="repeatSubscribers" Grid.Column="1" Grid.Row="0" Content="Subscribers immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="repeatRegulars" Grid.Column="1" Grid.Row="1" Content="Regulars immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="repeatCasters" Grid.Column="1" Grid.Row="2" Content="Casters immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="repeatCustom" Grid.Column="0" Grid.Row="2" Content="Custom Message" Margin="5,5,0,5"/>
+                    <StackPanel x:Name="repeatCustomStack" Grid.ColumnSpan="2" Grid.Row="3">
+                        <TextBlock Margin="5,5,0,0">If Custom Message Enabled, please input custom message below</TextBlock>
+                        <TextBox x:Name="repeatTimeooutMSG" HorizontalAlignment="Stretch" Margin="5,0,0,5"/>
+                    </StackPanel>
+                    <Separator Grid.Column="0" Grid.Row="4"/>
+                    <TextBlock Grid.Column="1" Grid.Row="4" Margin="5,5,0,0">Custom limits (all integers)</TextBlock>
+                    <CheckBox x:Name="repeatLetters" Grid.Column="0" Grid.Row="5" Content="Custom Letters Limit (enter min amount)" Margin="5,5,0,5"/>
+                    <TextBox x:Name="repeatLettersThreshold" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                    <CheckBox x:Name="repeatWords" Grid.Column="0" Grid.Row="6" Content="Custom Words Limit (enter min amount)" Margin="5,5,0,5"/>
+                    <TextBox x:Name="repeatWordsThreshold" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                    <CheckBox x:Name="repeatLPW" Grid.Column="0" Grid.Row="7" Content="Custom LPW Limit (enter max amount)" Margin="5,5,0,5"/>
+                    <TextBox x:Name="repeatLPWThreshold" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                </Grid>
+            </TabItem>
+
+
+            <!-- SPAM PROTECTION: FLOOD -->
+            <TabItem Header="Flood Protection">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="floodProtection" Grid.Column="0" Grid.Row="0" Content="Protection Enabled" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="floodSilentProtection" Grid.Column="0" Grid.Row="1" Content="Silent Protection" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="floodSubscribers" Grid.Column="1" Grid.Row="0" Content="Subscribers immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="floodRegulars" Grid.Column="1" Grid.Row="1" Content="Regulars immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="floodCasters" Grid.Column="1" Grid.Row="2" Content="Casters immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="floodCustom" Grid.Column="0" Grid.Row="2" Content="Custom Message" Margin="5,5,0,5"/>
+                    <StackPanel x:Name="floodCustomStack" Grid.ColumnSpan="2" Grid.Row="3">
+                        <TextBlock Margin="5,5,0,0">If Custom Message Enabled, please input custom message below</TextBlock>
+                        <TextBox x:Name="floodTimeooutMSG" HorizontalAlignment="Stretch" Margin="5,0,0,5"/>
+                    </StackPanel>
+                    <TextBlock Grid.ColumnSpan="2" Grid.Row="4" Margin="5,5,0,0">Minimum number of messages per 15 seconds to trigger</TextBlock>
+                    <TextBox x:Name="floodThreshold" Grid.ColumnSpan="2" Grid.Row="5" HorizontalAlignment="Stretch" Margin="5,0,5,5"/>
+                </Grid>
+            </TabItem>
+
+
+            <!-- SPAM PROTECTION: PARAGRAPHS -->
+            <TabItem Header="Paragraph Protection">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="paragraphProtection" Grid.Column="0" Grid.Row="0" Content="Protection Enabled" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="paragraphSilentProtection" Grid.Column="0" Grid.Row="1" Content="Silent Protection" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="paragraphSubscribers" Grid.Column="1" Grid.Row="0" Content="Subscribers immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="paragraphRegulars" Grid.Column="1" Grid.Row="1" Content="Regulars immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="paragraphCasters" Grid.Column="1" Grid.Row="2" Content="Casters immune?" Margin="5,5,0,5"/>
+                    <CheckBox x:Name="paragraphCustom" Grid.Column="0" Grid.Row="2" Content="Custom Message" Margin="5,5,0,5"/>
+                    <StackPanel x:Name="paragraphCustomStack" Grid.ColumnSpan="2" Grid.Row="3">
+                        <TextBlock Margin="5,5,0,0">If Custom Message Enabled, please input custom message below</TextBlock>
+                        <TextBox x:Name="paragraphTimeooutMSG" HorizontalAlignment="Stretch" Margin="5,0,0,5"/>
+                    </StackPanel>
+                    <TextBlock Grid.ColumnSpan="2" Grid.Row="4" Margin="5,5,0,0">Maximum message length allowed (default 200 characters)</TextBlock>
+                    <TextBox x:Name="paragraphThreshold" Grid.ColumnSpan="2" Grid.Row="5" HorizontalAlignment="Stretch" Margin="5,0,0,5"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Click="spamSettingsClick" Margin="5" x:Name="spamUpdate">Update Spam Protection Settings</Button>
+    </StackPanel>
+</UserControl>

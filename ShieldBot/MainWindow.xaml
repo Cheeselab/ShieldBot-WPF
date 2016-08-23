@@ -3,11 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:HamburgerMenu="clr-namespace:HamburgerMenu;assembly=HamburgerMenu"
         xmlns:local="clr-namespace:ShieldBot"
         mc:Ignorable="d"
-        Title="ShieldBot" Height="350" Width="525">
+        Title="ShieldBot" Height="350" Width="525" Background="CadetBlue">
     <DockPanel>
-        <Menu DockPanel.Dock="Top" Background="LightGray"  Height="20" Grid.Row="0">
+        <HamburgerMenu:HamburgerMenu ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="Blue" MenuIconColor="White" SelectionIndicatorColor="White" MenuItemForeground="White" HorizontalAlignment="Left">
+            <HamburgerMenu:HamburgerMenuItem Icon="fontAssets\home.png" Text="Dashboard"/>
+            <HamburgerMenu:HamburgerMenuItem Icon="fontAssets\login.png" Text="Services"/>
+            <HamburgerMenu:HamburgerMenuItem Icon="fontAssets\filter.png" Text="Spam Filtering"/>
+        </HamburgerMenu:HamburgerMenu>
+        <!--<Menu DockPanel.Dock="Top" Background="LightGray"  Height="20" Grid.Row="0">
             <MenuItem Header="Connections">
                 <MenuItem Header="Twitch">
                     <MenuItem Header="Connect"/>
@@ -35,7 +41,7 @@
             <MenuItem Header="Music Player"/>
             <MenuItem Header="Options">
                 <MenuItem Header="Add-Ons"/>
-                <MenuItem Header="Spam Protection"/>
+                <MenuItem Header="Spam Protection" Click="spamProtNav"/>
                 <MenuItem Header="Commands"/>
                 <MenuItem Header="Timers"/>
                 <MenuItem Header="Currencies"/>
@@ -52,7 +58,7 @@
                 <MenuItem Header="About Program"/>
                 <MenuItem Header="Check for updates"/>
             </MenuItem>
-        </Menu>
+        </Menu>-->
         <ScrollViewer>
             <StackPanel>
 

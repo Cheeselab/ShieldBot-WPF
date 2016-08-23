@@ -24,5 +24,10 @@ namespace ShieldBot
         {
             InitializeComponent();
         }
+
+        private void spamProtNav(object sender, RoutedEventArgs e)
+        {
+            currentContent.Content = new SpamProtection();
+        }
     }
 }
